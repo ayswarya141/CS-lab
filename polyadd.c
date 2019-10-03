@@ -79,7 +79,7 @@
        poly->next=NULL;
        }
         }
-       void sort(struct link*node)
+       /* void sort(struct link*node)
        {
     struct link *i,*j;
     int t;
@@ -98,7 +98,7 @@
             }
         }
     }
-     }
+     } */
    void main()
     {
       poly1=(struct link *)malloc(sizeof(struct link));
@@ -106,10 +106,10 @@
       poly=(struct link *)malloc(sizeof(struct link));
       printf("\nenter polynomial1\n");
       create(poly1);
-      sort(poly1);
+      //sort(poly1);
       printf("\nenter polynomial2\n");
       create(poly2);
-      sort(poly2);
+      //sort(poly2);
       printf("\n1st Number:");
       show(poly1);
       printf("\n2nd Number:");
