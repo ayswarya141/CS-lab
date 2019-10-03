@@ -2,9 +2,9 @@
 
 #include<stdlib.h>
  
-#define MAX 10
+#define MAX 5
  
-int top1=-1,top2=MAX-1,bottom=MAX,stack[MAX];
+int top1=-1,top2=MAX,bottom=MAX,stack[MAX];
 void push1();
 void push2();
 void pop1();
@@ -18,9 +18,9 @@ void main()
 	
 	while(1) 
 	{
-		printf("\n*** Stack Menu ***");
-		printf("\n\n1.Push1\n2.pop1\n3.display1\n4push2\n5.pop2\n6.display2\n7.exit");
-		printf("\n\nEnter your choice(1-7):");
+		printf("\n Stack Menu ");
+		printf("\n1. Push1\n2. Pop1\n3. Display1\n4. Push2\n5. Pop2\n6. Display2\n7. Exit");
+		printf("\n\nEnter your choice\t");
 		scanf("%d",&ch);
 		
 		switch(ch)
@@ -31,14 +31,14 @@ void main()
 					break;
 			case 3: display1();
 					break;
-                	case 4:push2();
-			  break;
-		        case 5:pop2();
-			  break ;
-	        case 6:display2();
-		  break;
-		case 7:exit(0);
-		default: printf("\nWrong Choice!!");
+            case 4: push2();
+					break;
+			case 5: pop2();
+					break ;
+	        case 6: display2();
+		 			break;
+			case 7:exit(0);
+			default: printf("\nWrong Choice!!");
 		}
 	}
 }
@@ -49,7 +49,7 @@ void push1()
 	
 	if(top1==top2-1)
 	{
-		printf("\nStack is full!!");
+		printf("\nStack full!!");
 	}
 	else
 	{
@@ -66,7 +66,7 @@ void push2()
 	
 	if(top1+1==top2)
 	{
-		printf("\nStack is full!!");
+		printf("\nStack full!!");
 	}
 	else
 	{
@@ -80,7 +80,7 @@ void pop1()
 {
 	if(top1==-1)
 	{
-		printf("\nStack is empty!!");
+		printf("\nStack empty!!");
 	}
 	else
 	{
@@ -91,9 +91,9 @@ void pop1()
  
 void pop2()
 {
-	if(top2==MAX-1)
+	if(top2==MAX)
 	{
-		printf("\nStack is empty!!");
+		printf("\nStack empty!!");
 	}
 	else
 	{
@@ -107,11 +107,11 @@ void display1(){
 	
 	if(top1==-1)
 	{
-		printf("\nStack is empty!!");
+		printf("\nStack empty!!");
 	}
 	else
 	{
-		printf("\nStack is...\n");
+		printf("\nStack is: \n");
     	for(int i=top1;i>=0;--i)
 			printf("%d\n",stack[i]);
 	}
@@ -120,19 +120,18 @@ void display1(){
 void display2()
 {
 	
-	if(top2==MAX-1)
+	if(top2==MAX)
 	{
-		printf("\nStack is empty!!");
+		printf("\nStack empty!!");
 	}
 	else
 	{
-		printf("\nStack is...\n");
-		for(int i=top2;i<MAX-1;i++)
+		printf("\nStack is: \n");
+		for(int i=top2;i<MAX;i++)
 			printf("%d\n",stack[i]);
 	}
 
 }
-
 
 
 
