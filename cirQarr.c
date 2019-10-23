@@ -1,92 +1,68 @@
 #include<stdio.h>
-#include<stdlib.h>
-#define MAX 5
-
-int Q[MAX],rear=-1,front=-1 ;
-
-void enqueue();
-void dequeue();
-void display();
-
-void main()
-{
- int ch ;
-
-  while(1)
-      {
-          printf("\n\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit");
-		printf("\n\nEnter your choice:");
-		scanf("%d",&ch);
-		
-		switch(ch)
-		{
-			case 1: enqueue();
-					break;
-			case 2: dequeue();
-					break;
-			case 3: display();
-					break;
-			case 4: exit(0);
-			
-			default: printf("\nWrong Choice!!");
-		}
-	}
+#define SIZE 5
+int a[SIZE],front=-1,rear=-1;
+void enqueue(int data){
+  if (front==(rear+1)%SIZE)
+    printf("Queue is Full");
+  else if (front==-1){
+    front++;rear++;
+    a[rear]=data;
+  }
+  else{
+    if (rear==SIZE-1)
+      rear=0;
+    else
+      rear++;
+    a[rear]=data;
+  }
+  printf("\n");
 }
-void enqueue()
-{
-   int val;
-	
-	if(front==(rear+1)%MAX)
-	{
-		printf("\nQueue is full!!");
-	}
-	else
-	{   
-          printf("\nEnter element to be enqueued:");
-		scanf("%d",&val);    
-            if(front==-1)
-               {front=0;
-               rear=0; } 
-            else 
-		rear=(rear+1)%MAX;
-          Q[rear]=val;
-	}
+void dequeue(){
+  if (front==-1)
+    printf("Empty Queue");
+  else{
+    printf("%d is deleted",a[front]);
+    if (front==rear)
+      front=rear=-1;
+    else if(front==SIZE-1)
+      front=0;
+    else
+      front++;
+  }
+  printf("\n");
 }
-
-void dequeue()
-{  
-	
-   if(front==-1)
-      printf("\nQueue is empty\n");
-   else 
-      
-      if(front==rear)
-       { front=-1;
-        rear=-1;
-        }
-        
-      else
-        front=(front+1)%MAX ;
-      
-}      
-
-void display()
-{
- int i;
- if(front==-1 && rear==-1)
-  printf("Queue is empty.\n") ;
- else
-  if(front<rear)
-   { 
-     for(i=front;i<=rear;i++)
-         printf("%d \n",Q[i]);
-   }
-  else
-   if(rear<front)
-    {
-      for(i=0;i<=rear;i++)
-        printf("%d\n",Q[i]);
-      for(i=front;i<=MAX-1;i++)
-         printf("%d\n",Q[i]); 
-    }  
+void display(){
+  if (front==-1)
+    printf("Empty Queue");
+  else if(front<=rear){
+    for (int i=front;i<=rear;i++)
+      printf("%d ",a[i]);
+  }
+  else{
+    for (int i=front;i<SIZE;i++)
+      printf("%d ",a[i]);
+    for (int i=0;i<=rear;i++)
+      printf("%d ",a[i]);
+  }
+  printf("\n");
+}
+int main(){
+  int x=1,data;
+  printf("Enter Option\n1.Enqueue\n2.Dequeue\n3.Display\n0.Exit\n");
+  while(x){
+    scanf("%d",&x);
+    if (x==1){
+      printf("Enter Data: ");
+      scanf("%d",&data);
+      enqueue(data);
+    }
+    else if(x==2){
+      dequeue();
+    }
+    else if(x==3){
+      display();
+    }
+    printf("\n");
+  }
+  return 0;
 }
