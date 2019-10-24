@@ -92,7 +92,7 @@ void insert(){
 	ptr=root;
 	flag=0;
 	while((ptr=!NULL)&&(flag==0)){
-		if(x<(ptr->data)){
+		if(x< (ptr->data)){
 			parent=ptr;
 			ptr=ptr->left;
 		}
@@ -108,4 +108,36 @@ void insert(){
 		printf("Value Not Found");
 		exit(0);
 		}
-
+	else{
+	if((ptr->left=NULL)&&(ptr->right==NULL))
+		case=1;
+	else if((ptr->left=!NULL)&&(ptr->right==NULL))
+		case=3;
+	else 
+		case=2;
+	if()
+}
+void search(int root){
+int key;
+ptr=root;
+flag=0;
+printf("Enter the element to searched: ");
+scanf("%d",&key);
+while((ptr=!NULL)&&(flag==0)){
+	if(key<(ptr->data)){
+ 		ptr=ptr->left;
+	}
+    else if(key>(ptr->data)){
+    	ptr=ptr->right;
+    }
+    else
+    	flag=1;
+    }
+    if(flag==1){
+		printf("Found");
+	}
+	else{
+		printf("Not Found");
+	}
+}
+	
